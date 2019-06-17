@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="card-body">
-					<form class="form" action="cadastraFuncionario" method="POST">
+					<form class="form" action="Servico" method="POST">
 
 						<div class="row">
 							<div class="form-group col">
@@ -115,8 +115,7 @@
 									<% 
 										List<Regional> regionais = new LinkedList<>();
 										for(EntidadeDominio e: resultado.getLista()){
-											Regional regional = (Regional)e;
-											regionais.add(regional);
+											regionais.add((Regional)e);
 										}
 										request.setAttribute("listaRegionais", regionais);
 									%>
@@ -188,12 +187,21 @@
 											class="fas fa-user-check"></i></span>
 									</div>
 									<%
-										resultado = new ConsultaPorId().getEntidade(1, Usuario.class);
-										Usuario userResp =(Usuario)resultado.getEntidade();
-										request.setAttribute("usuarioResponsavel", userResp);
+										resultado = new ConsultarTodos().executa(new Usuario());
+										List<Usuario> users = new LinkedList<>();
+										for(EntidadeDominio e: resultado.getLista()){
+											users.add((Usuario)e);
+										}
+										request.setAttribute("listaUsuarios", users);
 									%>
-									<input class="form-control" type="text" id="responsavel" name="responsavel" 
-									value="${usuarioResponsavel.getNome()}" disabled required />
+									<select class="form-control" id="cargo" name="usuario" required>
+										<option>Escolha um Usuário:<option>
+											<c:forEach var="usuario" items="${listaUsuarios}">
+												<option value="${usuario.getId()}">
+													<c:out value="${usuario.getNome()}"></c:out>
+												</option>
+											</c:forEach>
+									</select>
 								</div>
 							</div>
 						</div>

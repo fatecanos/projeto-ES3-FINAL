@@ -52,7 +52,7 @@
 					<a><i class="fas fa-bell fa-lg"></i></a> <a><i
 						class="fas fa-cog fa-lg ml-4"></i></a>
 				</nav>
-
+				<div><%=request.getParameter("resultado")%></div>
 				<div class="bg-secondary conteudo"></div>
 			</section>
 		</div>

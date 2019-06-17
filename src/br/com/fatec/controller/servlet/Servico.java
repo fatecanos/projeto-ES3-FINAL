@@ -69,9 +69,12 @@ public class Servico extends HttpServlet {
 		out.println("Metodo:"+metodo);
 		out.println("Operacao:"+operacao);
 		
+		
 		IHelper vh = viewHelpers.get(uri+metodo);
 		EntidadeDominio entidade = vh.getEntidade(request);
 		Command command = comandos.get(operacao);
+		
+		out.println("Entidade id: "+ entidade.getClass().getSimpleName());
 		
 		vh.setView(command.executa(entidade), request, response);
 	}
