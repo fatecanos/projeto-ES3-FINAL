@@ -33,7 +33,7 @@ public class HibernateConfig {
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");//what is it?
                 settings.put(Environment.SHOW_SQL, "false");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread"); 
-                settings.put(Environment.HBM2DDL_AUTO, "update"); //which are actions that it avaliable?
+                settings.put(Environment.HBM2DDL_AUTO, "create-drop"); //which are actions that it avaliable?
 
                 configuration.setProperties(settings);
 

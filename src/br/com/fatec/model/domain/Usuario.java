@@ -20,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter 
 public class Usuario extends EntidadeDominio implements IValidacaoStrategy{
 	
-	@Column(name="nome", nullable=false)
+	@Column(name="nome", nullable=false, unique=true)
 	private String nome;
 	
 	@Column(name="senha", nullable=false)

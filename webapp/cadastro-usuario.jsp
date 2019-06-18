@@ -1,5 +1,4 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,8 +9,8 @@
 
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 	<div class="container-fluid h-100 bg-secondary">
@@ -21,7 +20,7 @@
 					<h3 class="text-center">Cadastro de Usuário</h3>
 				</div>
 				<div class="card-body">
-					<form action="Servico" method="GET">
+					<form action="Servico" method="POST">
 						<div class="form-group">
 							<label class="font-weight-bold" for="usuario">Usuário</label>
 							<div class="input-group">
@@ -39,7 +38,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input class="form-control" id="senha" type="password"
+								<input class="form-control" id="pass" type="password"
 									name="senha" placeholder="Insira Sua Senha" required />
 							</div>
 						</div>
@@ -51,8 +50,9 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input class="form-control" id="senha" type="password"
-									name="confirmaSenha" placeholder="Confirme Sua Senha" required />
+								<input class="form-control" id="validatePass" type="password"
+									name="confirmaSenha" placeholder="Confirme Sua Senha" required 
+								onBlur="validatePassword()"/>
 							</div>
 						</div>
 
@@ -79,8 +79,7 @@
 				<div class="card-footer">
 					<div class="row justify-content-between">
 						<a href="index.jsp"><label class="btn btn-outline-primary">Voltar</label></a>
-						<label class="btn btn-success" for="botaoCadastrar"
-							onclick="selecionaTodos()">Cadastrar</label>
+						<label class="btn btn-success" for="botaoCadastrar" id="btnCadastrar">Cadastrar</label>
 					</div>
 				</div>
 			</div>
@@ -89,6 +88,5 @@
 	<script src="js/jquery/jquery.slim.min.js"></script>
 	<script src="js/popper/popper.min.js"></script>
 	<script src="js/bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

@@ -25,41 +25,40 @@ public class UsuarioViewHelper implements IHelper{
 		List<Perfil> perfis = new LinkedList<>();
 		
 		for(int i=0; i < perfisSelecao.length; i++) {
-			System.out.println(perfisSelecao[i]);
+			System.out.println("on loop:"+ perfisSelecao[i]);
 			
-			if(perfisSelecao[i] == "ATENDENTE") {
+			if(perfisSelecao[i].equals("ATENDENTE")) {
 				perfis.add(Perfil.ATENDENTE);
 			}
 			
-			if(perfisSelecao[i] == "TRIAGEM_GRUPO") {
+			if(perfisSelecao[i].equals("TRIAGEM_GRUPO")) {
 				perfis.add(Perfil.TRIAGEM_GRUPO);
 			}
-			if(perfisSelecao[i] == "ADMINISTRADOR") {
+			
+			if(perfisSelecao[i].equals("ADMINISTRADOR")) {
 				perfis.add(Perfil.ADMINISTRADOR);
 			}
 			
-			if(perfisSelecao[i] == "ADMINISTRADOR_SISTEMA") {
+			if(perfisSelecao[i].equals("ADMINISTRADOR_SISTEMA")) {
 				perfis.add(Perfil.ADMINISTRADOR_SISTEMA);
 			}
 			
-			if(perfisSelecao[i] == "TRIAGEM_INICIAL") {
+			if(perfisSelecao[i].equals("TRIAGEM_INICIAL")) {
 				perfis.add(Perfil.TRIAGEM_INICIAL);
 			}
 		}
 		
+		System.out.println("Lista Perfis: "+(perfis.equals(null)?"sim":"nao"));
+		
 		Usuario usuario = new Usuario(nome, senha, perfis);
 		usuario.setIsAtivo(true);
-		usuario.setPerfis(perfis);
-		for(Perfil perfil : perfis) {
-			System.out.println(perfil.getClass().getSimpleName());
-		}
+		
 		return usuario;
 	}
 
 	@Override
 	public void setView(Resultado resultado, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		request.setAttribute("resultado", resultado.getMensagem() + ": "+ resultado.getMotivo());
 		response.sendRedirect("index.jsp?resultado="+resultado.getMensagem()+": "+resultado.getMotivo());
 	}
 	
